@@ -87,8 +87,8 @@ public class CalculateValues {
 
     public static void main(String[] args) {
         double ViMin = 5.0; // minimum initial velocity (m/s)
-        double ViMax = 15.0; // maximum initial velocity (m/s)
-        double step = 0.0005; // step size in m/s
+        double ViMax = 5.5; // maximum initial velocity (m/s)
+        double step = 1; // step size in m/s
 
         int numPoints = (int) ((ViMax - ViMin) / step) + 1;
         double[] velocities = new double[numPoints];
@@ -110,21 +110,23 @@ public class CalculateValues {
         PolynomialCurveFitter fitter = PolynomialCurveFitter.create(4);
         double[] coeff = fitter.fit(points.toList());
 
-        System.out.println("Quartic fit (x -> Vi):");
-        System.out.printf(
-                "Vi ≈ %.6f + %.6f*x + %.6f*x^2 + %.6f*x^3 + %.6f*x^4%n",
-                coeff[0], coeff[1], coeff[2], coeff[3], coeff[4]);
+        // System.out.println("Quartic fit (x -> Vi):");
+        // System.out.printf(
+        //         "Vi ≈ %.6f + %.6f*x + %.6f*x^2 + %.6f*x^3 + %.6f*x^4%n",
+        //         coeff[0], coeff[1], coeff[2], coeff[3], coeff[4]);
 
-        double xTarget = 8.0;
+        // double xTarget = 8.0;
 
-        double ViEstimate = coeff[0]
-                + coeff[1] * xTarget
-                + coeff[2] * xTarget * xTarget
-                + coeff[3] * xTarget * xTarget * xTarget
-                + coeff[4] * xTarget * xTarget * xTarget * xTarget;
+        // double ViEstimate = coeff[0]
+        //         + coeff[1] * xTarget
+        //         + coeff[2] * xTarget * xTarget
+        //         + coeff[3] * xTarget * xTarget * xTarget
+        //         + coeff[4] * xTarget * xTarget * xTarget * xTarget;
 
-        System.out.println("Estimated Vi for x = " + xTarget + " m: " + ViEstimate + " m/s");
+        // System.out.println("Estimated Vi for x = " + xTarget + " m: " + ViEstimate + " m/s");
 
-        System.out.println("x for estimated vi: " + calculateX(ViEstimate));
+        // System.out.println("x for estimated vi: " + calculateX(ViEstimate));
+
+        System.out.println(calculateX(0.1));
     }
 }
